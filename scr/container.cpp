@@ -2,7 +2,7 @@
 #include "container.h"
 
 counter::counter(bool f){
-	cout<<"ÕıÔÚ³õÊ¼»¯ËÄÎ¬Êı×é"<<endl;
+	cout<<"initializing 4D arrays"<<endl;
 	flag = f;
 	if (f)
 	{	
@@ -13,14 +13,14 @@ counter::counter(bool f){
 		{
 			array[i].resize(1296);
 			
-			cout<<"µÚÒ»Î¬³õÊ¼»¯½áÊø£¡"<<endl;
+			cout<<"Initialized the first dimension"<<endl;
 			for (int j=0;j<1296;j++)
 			{
 				array[i][j].resize(20);
-				cout<<"µÚ¶şÎ¬³õÊ¼»¯½áÊø£¡"<<endl;
+				cout<<"Initialized the second dimension"<<endl;
 				for (int k=0;k<20;k++){
 					array[i][j][k].resize(1296);	
-					cout<<"µÚÈıÎ¬³õÊ¼»¯½áÊø£¡"<<endl;
+					cout<<"Initialized the third dimensionï¼"<<endl;
 					for(int l=0;l<1296;l++)
 						array[i][j][k][l] = 1;
 				}
@@ -35,18 +35,18 @@ counter::counter(bool f){
 			array[i].resize(15);
 			prob[i].resize(15);
 			aprob[i].resize(15);
-			cout<<"µÚÒ»Î¬³õÊ¼»¯½áÊø£¡"<<endl;
+			cout<<"Initialized the first dimension"<<endl;
 			for (int j=0;j<15;j++)
 			{
 				array[i][j].resize(20);
 				prob[i][j].resize(20);
 				aprob[i][j].resize(20);
-				cout<<"µÚ¶şÎ¬³õÊ¼»¯½áÊø£¡"<<endl;
+				cout<<"Initialized the second dimensionï¼"<<endl;
 				for (int k=0;k<20;k++){
 					array[i][j][k].resize(15);	
 					prob[i][j][k].resize(15);
 					aprob[i][j][k].resize(15);
-					cout<<"µÚÈıÎ¬³õÊ¼»¯½áÊø£¡"<<endl;
+					cout<<"Initialized the third dimension"<<endl;
 					for(int l=0;l<15;l++)
 					array[i][j][k][l] = 1;
 				}
@@ -63,8 +63,8 @@ void counter::add(int x1, int y1, int x2, int y2){
 }
 
 void counter::comput(){
-	cout<<"ÕıÔÚ¼ÆËã¸ÅÂÊ¾ØÕó"<<endl;
-	if (flag)//Çø±ğ×ÖÄ¸±íµÄ¶¨Òå·½°¸Ò»¡¢¶ş
+	cout<<"Calculating the probabilities"<<endl;
+	if (flag)
 	{
 		for (int i=0;i<20;i++)
 			for (int j=0;j<1296;j++){
@@ -100,7 +100,7 @@ void counter::comput(){
 }
 
 void counter::print(ofstream & of){
-	cout<<"ÕıÔÚÊä³öµÚÒ»¸ö¸ÅÂÊ¾ØÕó"<<endl;
+	cout<<"Writing the first probability matrix"<<endl;
 	if(flag){
 	for (int i=0;i<20;i++)
 	{
@@ -131,7 +131,7 @@ void counter::print(ofstream & of){
 			of<<endl;
 		}
 	}
-	cout<<"ÕıÔÚÊä³öµÚ¶ş¸ö¸ÅÂÊ¾ØÕó"<<endl;
+	cout<<"Writing the second probability matrix"<<endl;
 	if(flag){
 		for (int i=0;i<20;i++)
 		{
