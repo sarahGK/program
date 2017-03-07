@@ -2,18 +2,18 @@
 #include "eigen.h"
 
 /****************************************************
- * ÇóÊµ¶Ô³Æ¾ØÕóµÄÌØÕ÷ÖµºÍÌØÕ÷ÏòÁ¿µÄÑÅ¿É±È·¨
- * ²ÎÊı:
- * a: Êı×é,Ìå»ıÎªn*n,´æ·Ån½×Êµ¶Ô³Æ¾ØÕó,·µ»ØÊ±¶Ô
- * ½ÇÏßÉÏ´æ·Ån¸öÌØÕ÷Öµ
- * n:¾ØÕóµÄ½×Êı
- * v:Êı×é,Ìå»ıÎªn*n,´æ·ÅÌØÕ÷ÏòÁ¿,ÆäÖĞµÚiÁĞÎªÓë
- * lambai¶ÔÓ¦µÄÌØÕ÷ÏòÁ¿
- * eps¿ØÖÆ¾«¶È
- * jt×î´óµÄµş´ø´ÎÊı
- * ·µ»ØÖµ:Ğ¡ÓÚ0,±íÃ÷µş´øÁËjt´Î»¹Ã»ÓĞÕÒµ½ÌØÕ÷Öµ
- * ´óÓÚ0,ÔòÕı³£
- * ²Î¿¼Êé<<C³£ÓÃËã·¨³ÌĞò¼¯>>P205
+ * æ±‚å®å¯¹ç§°çŸ©é˜µçš„ç‰¹å¾å€¼å’Œç‰¹å¾å‘é‡çš„é›…å¯æ¯”æ³•
+ * å‚æ•°:
+ * a: æ•°ç»„,ä½“ç§¯ä¸ºn*n,å­˜æ”¾né˜¶å®å¯¹ç§°çŸ©é˜µ,è¿”å›æ—¶å¯¹
+ * è§’çº¿ä¸Šå­˜æ”¾nä¸ªç‰¹å¾å€¼
+ * n:çŸ©é˜µçš„é˜¶æ•°
+ * v:æ•°ç»„,ä½“ç§¯ä¸ºn*n,å­˜æ”¾ç‰¹å¾å‘é‡,å…¶ä¸­ç¬¬iåˆ—ä¸ºä¸
+ * lambaiå¯¹åº”çš„ç‰¹å¾å‘é‡
+ * epsæ§åˆ¶ç²¾åº¦
+ * jtæœ€å¤§çš„å å¸¦æ¬¡æ•°
+ * è¿”å›å€¼:å°äº0,è¡¨æ˜å å¸¦äº†jtæ¬¡è¿˜æ²¡æœ‰æ‰¾åˆ°ç‰¹å¾å€¼
+ * å¤§äº0,åˆ™æ­£å¸¸
+ * å‚è€ƒä¹¦<<Cå¸¸ç”¨ç®—æ³•ç¨‹åºé›†>>P205
  *****************************************************/
 int eejcb(double * a,int n,double *v, double eps,int jt)
 {
@@ -88,99 +88,6 @@ int eejcb(double * a,int n,double *v, double eps,int jt)
 	return(1);
 }
 
-
-//void eastrq(double *a,int n,double *q,double *b,double *c)
-//{
-//	int i,j,k,u,v;
-//	double h,f,g,h2;
-//	for(i=0;i<=n-1;i++)
-//		for(j=0;j<=n-1;j++)
-//		{
-//			u=i*n+j;
-//			q[u]=a[u];
-//		}
-//	for(i=n-1;i>=1;i--)
-//	{
-//		h=0.0;
-//		if(i>1)
-//		{
-//			for(k=0;k<=i-1;k++)
-//			{
-//				u=i*n+k;
-//				h=h+q[u]*q[u];
-//			}
-//		}
-//			//if(h+1.0==1.0)
-//		if(fabs(h)<1e-9)
-//			{
-//				c[i-1]=0;
-//				if(i==1)
-//					c[i-1]=q[i*n+i-1];
-//				b[i]=0;
-//			}
-//			else
-//			{
-//				c[i-1]=sqrt(h);
-//				u=i*n+i-1;
-//				if(q[u]>0)
-//					c[i-1]=-c[i-1];
-//				h=h-q[u]*c[i-1];
-//				q[u]=q[u]-c[i-1];
-//				f=0;
-//				for(j=0;j<=i-1;j++)//j=0
-//				{
-//					q[j*n+i]=q[i*n+j]/h;
-//					g=0;
-//					for(k=0;k<=j;k++)
-//						g=g+q[j*n+k]*q[i*n+k];
-//					if(j+1<=i-1)
-//						for(k=j+1;k<=i-1;k++)
-//							g=g+q[k*n+j]*q[i*n+k];
-//					c[j-1]=g/h;
-//					f=f+g*q[j*n+i];
-//				}
-//				h2=f/(h+h);
-//				for(j=0;j<=i-1;j++)//j=0
-//				{
-//					f=q[i*n+j];
-//					g=c[j-1]-h2*f;
-//					c[j-1]=g;
-//					for(k=0;k<=j;k++)
-//					{
-//						u=j*n+k;
-//						q[u]=q[u]-f*c[k-1]-g*q[i*n+k];
-//					}
-//				}
-//				b[i]=h;
-//			}
-//		}
-//		b[0]=0;
-//		for(i=0;i<=n-1;i++)
-//		{
-//			if((fabs(b[i])>=1e-9)&&(i-1)>=0)
-//				for(j=0;j<=i-1;j++)
-//				{
-//					g=0;
-//					for(k=0;k<=i-1;k++)
-//						g=g+q[i*n+k]*q[k*n+j];
-//					for(k=0;k<=i-1;k++)
-//					{
-//						u=k*n+j;
-//						q[u]=q[u]-g*q[k*n+j];
-//					}
-//				}
-//				u=i*n+i;
-//				b[i]=q[u];
-//				q[u]=1.0;
-//				if(i-1>=0)
-//					for(j=0;j<=i-1;j++)
-//					{
-//						q[i*n+j]=0;
-//						q[j*n+i]=0;
-//					}
-//		}
-//		return;
-//}
 void SortEigen(double mu[3],double a[3][3])
 {
 	int i,j,k;
@@ -190,7 +97,7 @@ void SortEigen(double mu[3],double a[3][3])
 	for(i=0;i<3;i++)
 	{
 		for(j=0;j<3;j++)
-			tempa[i][j]=a[i][j];//¸ù¾İgslµÄkabschËã·¨£¬È¡×ªÖÃ?
+			tempa[i][j]=a[i][j];//æ ¹æ®gslçš„kabschç®—æ³•ï¼Œå–è½¬ç½®?
 		tempmu[i]=mu[i];
 	}
 	for(i=0;i<2;i++)
@@ -209,11 +116,11 @@ void SortEigen(double mu[3],double a[3][3])
 		if(k!=i)
 		{
 			temp=tempmu[i];tempmu[i]=tempmu[k];tempmu[k]=temp;
-			//½»»»i,kÁĞ
+			//äº¤æ¢i,kåˆ—
 			/*temp=tempa[0][i];tempa[0][i]=tempa[0][k];tempa[0][k]=temp;
 			temp=tempa[1][i];tempa[1][i]=tempa[1][k];tempa[1][k]=temp;
 			temp=tempa[2][i];tempa[2][i]=tempa[2][k];tempa[2][k]=temp;*/
-			//½»»»i,kĞĞ
+			//äº¤æ¢i,kè¡Œ
 			temp=tempa[i][0];tempa[i][0]=tempa[k][0];tempa[k][0]=temp;
 			temp=tempa[i][1];tempa[i][1]=tempa[k][1];tempa[k][1]=temp;
 			temp=tempa[i][2];tempa[i][2]=tempa[k][2];tempa[k][2]=temp;
