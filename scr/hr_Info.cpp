@@ -13,26 +13,6 @@ HR_genel::~HR_genel(){}
 
 void HR_genel::set_prbrank(){
 	vector<int> decoystemp;
-	/*for(int i=0;i<num_decoys;i++)
-		decoystemp.push_back(decoys[i]);*/
-	cout<<"ÕýÔÚÅÅÐòÖÐ£®£®£®"<<endl;
-	/*for(int i=0;i<num_decoys-1;i++){
-		int p = i;
-		double d;
-		int t;
-		for(int j=i+1;j<num_decoys;j++)
-			if(probal1_decoys[j]>probal1_decoys[p]) p=j;
-		prbrank1.push_back(decoystemp[p]);
-		if(p!=i){
-			d = probal1_decoys[p];
-			probal1_decoys[p] = probal1_decoys[i];
-			probal1_decoys[i] = d;
-			t = decoystemp[p];
-			decoystemp[p] = decoystemp[i];
-			decoystemp[i] = t;
-		}		
-	}
-	prbrank1.push_back(decoystemp[num_decoys-1]);*/
 	for(int i=0;i<num_decoys;i++)
 		decoystemp.push_back(decoys[i]);
 	for(int i=0;i<num_decoys-1;i++){
